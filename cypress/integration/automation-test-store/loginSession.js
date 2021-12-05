@@ -5,9 +5,9 @@ describe ("Test login functions.", () => {
 
     beforeEach(function() {
         // cy.navigateTo_WebdriverUni_Homepage();
-        // // cy.get('#dropdown-checkboxes-radiobuttons').invoke('removeAttr', 'target').click({force:true})
         // cy.navigateTo_WebdriverUni_Checkbox_Page();
     })
+
     it("My Account is displayed if the user logged in successfully.", () => {
         // cy.visit("/");
         // cy.get('#customer_menu_top').click();
@@ -26,6 +26,15 @@ describe ("Test login functions.", () => {
         cy.login('amyuser', 'wellbeing123');
         cy.visit("/index.php?rt=account/login");
         cy.get("a[title='Edit account details']").should("be.visible")
+    })
+
+    it("Edit Account Option is not displayed if the user logged in successfully.", () => {
+        // cy.visit("/");
+        // cy.get('#customer_menu_top').click();
+        cy.login('amyuser', 'wellbeing123');
+        cy.visit("/index.php?rt=account/login");
+        // cy.get("a[title='Edit account details']").should("not.be.visible")
+        cy.get("a[title='Edit account details']").should("not.exist")
     })
 
 })

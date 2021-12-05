@@ -20,11 +20,23 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+//Ignore xhr output while running test
+// Cypress.Server.defaults({
+//     whitelist: (xhr) => {
+//         return true;
+//     }
+// })
+
 Cypress.Server.defaults({
-    whitelist: (xhr) => {
-        return true;
-    }
+    delay: 500,
+    force404: false,
+    ignore: (xhr) => {
+        // handle custom logic for filtering XHR requests
+    },
 })
+
+
 
 //register the command of allure plugin
 import '@shelex/cypress-allure-plugin';

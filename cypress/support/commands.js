@@ -28,8 +28,17 @@ Cypress.Commands.add("navigateTo_WebdriverUni_Checkbox_Page", () => {
     cy.visit("/" + "/Dropdown-Checkboxes-RadioButtons/index.html")
 })
 
-Cypress.Commands.add("selectProduct", productName => {
+// Cypress.Commands.add("selectProduct", productName => {
+//
+// })
 
+Cypress.Commands.add("login", (username, password )=> {
+    cy.session([username, password], () => {
+        cy.visit("/index.php?rt=account/login");
+        cy.get('#loginFrm_loginname').type(username)
+        cy.get('#loginFrm_password').type(password);
+        cy.get("button[title='Login']").click();
+    })
 })
 
 // -- This will overwrite an existing command --

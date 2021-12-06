@@ -1,12 +1,14 @@
 /// <reference types="Cypress" />
 
+import AutoHomePage_PO from "../../support/pageObjects/automatin-test-store/AutoHomePage_PO";
+
 describe ("Test login functions.", () => {
     Cypress.config('experimentalSessionSupport', true);
 
     beforeEach(function() {
-        // cy.navigateTo_WebdriverUni_Homepage();
-        // cy.navigateTo_WebdriverUni_Checkbox_Page();
-    })
+        // const loginPage_PO= new AutoHomePage_PO();
+        // loginPage_PO.visitLoginpage();
+    });
 
     it("My Account is displayed if the user logged in successfully.", () => {
         // cy.visit("/");

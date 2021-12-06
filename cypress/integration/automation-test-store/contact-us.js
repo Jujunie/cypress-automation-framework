@@ -1,12 +1,20 @@
 /// <reference types="Cypress" />
 
+import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
+import AutoHomePage_PO from "../../support/pageObjects/automatin-test-store/AutoHomePage_PO";
+
 describe("Test Contact Us form via Automation Test Store", () => {
+    const autoHomePage = new AutoHomePage_PO();
+
+
     before(function () {
-        cy.fixture("userDetails").as("user")
+        cy.fixture("webdriver-uni_userDetails").as("user")
     })
     it("Should be able to submit a successful submission via contact us form", () => {
-        cy.visit("https://www.automationteststore.com/");
-        cy.get('[href="https://automationteststore.com/index.php?rt=content/contact"]').click();
+        // cy.visit("https://www.automationteststore.com/");
+        // cy.get('[href="https://automationteststore.com/index.php?rt=content/contact"]').click();
+        autoHomePage.visitAutoHomepage();
+        autoHomePage.clickOn_contactUs_Button();
         // cy.xpath("//a[contains(@href, 'contact')]").click();
         cy.get("@user").then((user) => {
             cy.get('#ContactUsFrm_first_name').type(user.first_name);
